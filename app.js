@@ -47,3 +47,50 @@ $('#toggle').click(function() {
    $(this).toggleClass('active');
    $('#overlay').toggleClass('open');
   });
+
+
+
+
+// --------------------------------------
+const shareButton = document.querySelectorAll("button.shareButton")
+
+shareButton[0].addEventListener("click", (e) => {
+    for( let i=0; i < shareButton.length; i++ ) {
+       shareButton[i].classList.toggle("open")
+       shareButton[0].classList.remove("sent")
+    }
+})
+
+for( let i=1; i < shareButton.length; i++ ) {
+   
+   shareButton[i].addEventListener("click", (e) => {
+      
+   for( let i=0; i < shareButton.length; i++ ) {
+      shareButton[i].classList.toggle("open")
+   }
+   shareButton[0].classList.toggle("sent")
+   })
+}
+
+
+
+
+// --------------------------
+// $("a").attr("target", "_blank");
+
+// var links = document.links;
+// for (var i = 0; i < links.length; i++) {
+//      links[i].target = "_blank";
+// }
+
+
+
+document.body.addEventListener(function(e) {
+  var target = e.target;
+  do {
+      if (target.nodeName.toUpperCase() === 'A' && target.href) {
+          target.target = '_blank';
+          break;
+      }
+  } while (target = target.parentElement);
+}, true);
